@@ -31,7 +31,10 @@ class Encoder:
     for k,v in alphabet_num_str.items():
         alphabet_str_num[v] = k
 
-    def __init__(self, text_to_encode):
-        self.text = text_to_encode
+    def __init__(self, text_to_encode = None):
+        if text_to_encode:
+            self.text = text_to_encode
+        else:
+            self.text = ""
     
 

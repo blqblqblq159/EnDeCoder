@@ -1,13 +1,10 @@
-if __name__ == "__main__":
-    from base import *
-else:
-    from .base import *
+from base import *
 import random
 import re
 
 class CaesarEncoder(Encoder):
 
-    def __init__(self, text_to_encode, rotation = 0):
+    def __init__(self, text_to_encode = None, rotation = 0):
         super().__init__(text_to_encode)
         self.rotation = rotation
     
@@ -28,8 +25,7 @@ class CaesarEncoder(Encoder):
     def encoder_alphabet(self):
         alphabet_encode = {}
         for k, v in self.alphabet_num_str.items():
-            temp = self.alphabet_num_str[(k + self.rotation) % 26]
-            alphabet_encode[v] = temp
+            alphabet_encode[v] = self.alphabet_num_str[(k + self.rotation) % 26]
         return alphabet_encode
     
     def rotate_right(self, amount = 1):
